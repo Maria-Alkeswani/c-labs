@@ -1,0 +1,184 @@
+#include <stdio.h>
+#include<string.h>
+#include<ctype.h>
+
+void remchar(char *s, char chr)
+{
+   int i, j = 0;
+   for ( i = 0; s[i] != '\0'; i++ ) /* 'i' moves through all of original 's' */
+   {
+      if ( s[i] != chr )
+      {
+         s[j++] = s[i]; /* 'j' only moves after we write a non-'chr' */
+      }
+   }
+   s[j] = '\0'; /* re-null-terminate */
+}
+
+
+
+
+
+char *erase_c(char *p, int ch)
+{
+    char *ptr;
+
+    while (ptr = strchr(p, ch))
+        strcpy(ptr, ptr + 1);
+
+    return p;
+}
+int main(int argc, char** argv)
+{ 
+  FILE *z=fopen("mariaalkeswani.txt","w");
+  char str[100],str1[100],str2[100],*c,*cc,t,w,ch,mm,nn;
+  int i,j,ctr=0,new_char,m,n,count,k;
+  double(x);
+   printf("1.Split text\n2.Upper case to lower case\n3.Lower case to upper case\n4.Remove a character\n5.Add a character\n6.Replace a character\n7.Statistics\n8.Exit\nEnter the string: ");
+   scanf("%[^\n]", str);
+   fprintf(z,"%s",str);
+  
+    strcpy(str1,str);
+    
+  while(x){
+    strcpy(str,str1);
+    printf("\nEnter an option: ");
+    scanf("\n%lf",&x);
+    
+    // Split
+    
+   if (x==1){
+     for ( c = str; *c != (long)NULL; c++){
+        if ( *c == ' '){
+            *c = '\n';
+         }
+        }
+       printf("\nSplit text : %s\n",str);
+     }
+     
+     // lower
+     
+    else if (x==2){
+     for(i=0;i<=strlen(str);i++){
+      if(str[i]>=65&&str[i]<=90)
+         str[i]=str[i]+32; 
+       }
+     printf("\nUpper case to lower case : %s\n",str);  
+    }
+    
+        //upper
+        
+    else if (x==3){
+     for(i=0;i<=strlen(str);i++){
+      if(str[i]>=97&&str[i]<=122)
+         str[i]=str[i]-32;
+      }
+     printf("\nLower case to upper case : %s\n",str);
+    }
+    
+        // Remove character
+    
+    else if (x==4){
+        
+   
+   
+   printf("\nEnter the char to be removed : ");
+    scanf("\n%c",  &m);
+   remchar(str,m);
+  printf("result  : %s\n",str);
+        /Users/mariaalkeswani/Desktop/c.proggram/finish lab/finsh work4.txt
+        
+        
+     }
+    else if (x==5){
+        j=0;
+      printf("\nEnter the char like to append : ");
+   scanf("\n%c" , &mm);
+   for( i=0; i < strlen(str); i++){
+           if ( str[i] == ' '){
+           str2[j]= mm;
+           ++ j;
+           str2[j]=str[i];
+         }
+         else 
+        str2[j]=str[i];
+        ++j;
+       }
+   printf("source  : %s\n", str); 
+   printf("\nresult  : %s\n",str2);
+     }
+     else if (x==6){
+        printf("\nEnter the character to replaced: ");
+   scanf("\n%c" , &mm);
+   printf("\nEnter the alternate character : ");
+   scanf("\n%c" , &nn);
+   for( i=0; i<=strlen(str)-1; i++){
+           if ( str[i] == mm){
+           str[i]= nn;
+         }
+       }
+   printf("result  : %s\n", str); 
+       }
+     else if (x==7){
+      
+          strcpy(str2,str);
+    
+    // total count of chars
+    
+    printf("\nThe total count of chars : %d\n" ,  strlen(str)-1);
+    
+    // count of word
+    
+         count=1;
+         for ( c = str; *c != (int)NULL; c++)
+         {
+        if ( *c == ' ') ++count;
+        }
+       printf("\nCount of words : %d\n",count);
+    
+    // delete doplicat char
+    
+  	for(i = 0; i < strlen(str); i++)
+  	{
+  		for(j = i + 1; str[j] != '\0'; j++)
+  		{
+  			if(str[j] == str[i])  
+			{
+  				for(k = j; str[k] != '\0'; k++)
+				{
+					str[k] = str[k + 1];
+				}
+ 			}
+		}
+	}
+	// cout to char
+	
+	for(i = 0; i < strlen(str); i++)
+  	{
+  		count=0;
+  		for(j = 0; str2[j] != '\0'; j++)
+  		{
+  			if(str2[j] == str[i])  
+			{
+  				++count;
+ 			}
+		}
+		printf("\nThe count of %c" ,str[i]);
+		printf(" is: %d", count );
+	}
+	
+	printf("\n The Final String after Removing All Duplicates = %s ", str);
+      
+      
+       }
+     else if (x==8)
+     {
+       printf("exit");
+     break;
+     }
+    
+   continue;
+   }
+ return(0); 
+   
+}
